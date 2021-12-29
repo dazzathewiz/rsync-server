@@ -25,6 +25,8 @@ setup_sshd(){
 		echo "[sshd_config] PermitRootLogin prohibit-password"
 		sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
 	fi
+	echo "[sshd_config] SSH port set to: $SSH_PORT"
+	sed -i "s/#Port 22/Port $SSH_PORT/" /etc/ssh/sshd_config
 }
 
 setup_rsyncd(){
